@@ -1,7 +1,8 @@
 #!/bin/bash
 
 PYFILE="project_Vietnam.py"
-MAX_OPT=9
+DATASET_FILE="THOR_Vietnam_Bombing_Operations.csv"
+MAX_OPT=10
 
 #color codes
 BLUE="\033[1;34m"
@@ -27,8 +28,9 @@ echo -e "\t($BLUE 4 $ENDC) Display TOTAL NUMBER OF MISSIONS by country "
 echo -e "\t($BLUE 5 $ENDC) Display MOST ATTACKED COUNTRIES "
 echo -e "\t($BLUE 6 $ENDC) Display TYPE OF MISSIONS "
 echo -e "\t($BLUE 7 $ENDC) Display MOST ATTACKED LOCATIONS MAP "
-echo -e "\t($BLUE 8 $ENDC) Display MOST USED TYPE OF AIRCRAFTS "
-echo -e "\t($BLUE 9 $ENDC) Display AIRCRAFTS PER TYPE OF MISSION "
+echo -e "\t($BLUE 8 $ENDC) Display MOST ATTACKED LOCATIONS MAP BY DATE"
+echo -e "\t($BLUE 9 $ENDC) Display MOST USED TYPE OF AIRCRAFTS "
+echo -e "\t($BLUE 10 $ENDC) Display AIRCRAFTS PER TYPE OF MISSION "
 echo -e "\t($RED 0 $ENDC) Exit "
 echo ""
 
@@ -46,7 +48,12 @@ do
 done
 
 if ! [ -e $PYFILE ] ;then
-	echo "${RED}**ERROR: Python script file not found**${ENDC}"
+	echo -e "${RED}**ERROR: Python script file \"$PYFILE\" not found**${ENDC}"
+	exit 1
+fi
+
+if ! [ -e $DATASET_FILE ] ;then
+	echo -e "${RED}**ERROR: Dataset \"$DATASET_FILE\" not found**${ENDC}"
 	exit 1
 fi
 

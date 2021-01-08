@@ -1,5 +1,6 @@
 from pyspark import SparkConf, SparkContext
 from pyspark.sql import SparkSession
+from pyspark.sql.types import StringType
 from pyspark.sql.functions import *
 import pandas as pd
 import numpy as np
@@ -217,16 +218,54 @@ def most_attacked_locations_map():
                 .dropna() \
                 .groupBy('Latitude', 'Longitude') \
                 .agg(sum('Bombs dropped').alias('Bombs dropped'), count(lit(1)).alias('Number of attacks')) \
-                .filter(col('Bombs dropped') >= 150) #to avoid overloading the map with too many rows
+                .filter(col('Bombs dropped') >= 150)
 
         pandf = df2.toPandas()    
         print(pandf)
 
-        fig = px.scatter_mapbox(pandf, lat='Latitude', lon='Longitude', color='Bombs dropped', size='Bombs dropped',
-                  hover_data=['Number of attacks'], center=dict(lat=12.702571, lon=106.424241),
-                  color_continuous_scale='plasma', zoom=4, mapbox_style="carto-positron", title='Vietnam War Bombing Locations')
+        fig = px.scatter_mapbox(pandf,
+                                lat='Latitude',
+                                lon='Longitude',
+                                color='Bombs dropped',
+                                size='Bombs dropped',
+                                hover_data=['Number of attacks'],
+                                center=dict(lat=12.702571, lon=106.424241),
+                                color_continuous_scale='plasma',
+                                zoom=4,
+                                mapbox_style="carto-positron",
+                                title='Vietnam War Bombing Locations')
 
-        fig.write_html("locations.html")
+        fig.write_html("total_attacked_locations.html")
+        fig.show()
+
+def most_attacked_locations_map_bydate():
+        
+        df2 = df.select(last_day('MSNDATE').alias("Date"), round(col('TGTLATDD_DDD_WGS84'), 4).alias('Latitude'), round(col('TGTLONDDD_DDD_WGS84'), 4).alias('Longitude'), col('NUMWEAPONSDELIVERED').alias('Bombs dropped')) \
+                .filter(col('Bombs dropped') > 0) \
+                .dropna() \
+                .groupBy('Date', 'Latitude', 'Longitude') \
+                .agg(sum('Bombs dropped').alias('Bombs dropped'), count(lit(1)).alias('Number of attacks')) \
+                .filter(col('Bombs dropped') >= 150) \
+                .orderBy('Date') \
+                .withColumn('Date', col('Date').cast(StringType()))
+
+        pandf = df2.toPandas()    
+        print(pandf)
+
+        fig = px.scatter_mapbox(pandf, 
+                                lat='Latitude',
+                                lon='Longitude',
+                                color='Bombs dropped',
+                                size='Bombs dropped',
+                                hover_data=['Number of attacks'],
+                                center=dict(lat=12.702571, lon=106.424241),
+                                color_continuous_scale='plasma',
+                                zoom=4, 
+                                mapbox_style="carto-positron",
+                                animation_frame='Date',
+                                title='Vietnam War Bombing Locations By Date')
+
+        fig.write_html('attacked_locations_bydate.html')
         fig.show()
 
 def aircraft_types():
@@ -320,8 +359,10 @@ def main():
         elif int(sys.argv[1]) == 7:
                 most_attacked_locations_map()
         elif int(sys.argv[1]) == 8:
-                aircraft_types()
+                most_attacked_locations_map_bydate()
         elif int(sys.argv[1]) == 9:
+                aircraft_types()
+        elif int(sys.argv[1]) == 10:
                 aircraft_per_type_of_mission()
         else:
                 print("** ERROR: Wrong parameter **")
