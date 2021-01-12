@@ -412,8 +412,19 @@ def most_common_takeoff():
 def main():
 
         if len(sys.argv) < 2:
-                print("** ERROR: No arguments found **")
-                sys.exit(1)
+                total_bombings_bydate()
+                total_missions_bydate()
+                total_bombings_bycountry()
+                total_missions_bycountry()
+                most_attacked_countries()
+                mission_types()
+                most_attacked_locations_map()
+                most_attacked_locations_map_bydate()
+                aircraft_types()
+                aircraft_per_type_of_mission()
+                aircraft_per_bombings()
+                most_common_takeoff()
+                sys.exit(0)
         
         if int(sys.argv[1]) == 1:
                 total_bombings_bydate()
