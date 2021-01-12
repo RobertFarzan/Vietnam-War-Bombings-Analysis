@@ -104,7 +104,7 @@ def total_missions_bydate():
 
         plt.xlabel("Date")
         plt.ylabel("Number of Missions")
-        plt.title("Vietnam War Missions 1975 (Monthly totals)")
+        plt.title("Vietnam War Missions (Monthly totals)")
         plt.grid(True)
         plt.show()
 
@@ -120,7 +120,7 @@ def total_bombings_bycountry():
 
         fig, ax = plt.subplots(figsize=(9,9))
 
-        ax.bar(pandf['Country'], pandf['NumWeapons'])
+        ax.bar(pandf['Country'], pandf['NumWeapons'], color='royalblue')
         ax.legend()
 
         #avoid scientific notation on Y-axis
@@ -130,7 +130,7 @@ def total_bombings_bycountry():
         plt.xticks(rotation=10)
         plt.xlabel("Countries")
         plt.ylabel("Bombs dropped")
-        plt.title("Vietnam War Bombings 1975 (Totals by Country)")
+        plt.title("Vietnam War Bombings (Totals by Country)")
         plt.show()
 
 def total_missions_bycountry(): 
@@ -153,7 +153,7 @@ def total_missions_bycountry():
         plt.xticks(rotation=10)
         plt.xlabel("Countries")
         plt.ylabel("Number of Missions")
-        plt.title("Vietnam War Missions 1975 (Totals by Country)")
+        plt.title("Vietnam War Missions (Totals by Country)")
         plt.show()
 
 def most_attacked_countries(): 
@@ -168,7 +168,7 @@ def most_attacked_countries():
         print(pandf)
         fig, ax = plt.subplots(figsize=(9,9))
 
-        ax.bar(pandf['TargetCountry'], pandf['TotalWeaponsDropped'])
+        ax.bar(pandf['TargetCountry'], pandf['TotalWeaponsDropped'], color='royalblue')
         ax.legend()
 
         #avoid scientific notation on Y-axis
@@ -178,7 +178,7 @@ def most_attacked_countries():
         plt.xticks(rotation=10)
         plt.xlabel("Attacked Countries")
         plt.ylabel("Number of Bombs dropped")
-        plt.title("Vietnam War Most Affected Countries 1975")
+        plt.title("Vietnam War Most Affected Countries")
         plt.show()
 
 def mission_types():
@@ -208,7 +208,7 @@ def mission_types():
         plt.xticks(rotation=15)
         plt.xlabel("Type of Mission")
         plt.ylabel("Percentage of total missions")
-        plt.title("Vietnam War Type of Missions 1975")
+        plt.title("Vietnam War Type of Missions")
         plt.show()
 
 def most_attacked_locations_map():
@@ -337,6 +337,77 @@ def aircraft_per_type_of_mission():
         plt.title("Vietnam War Mission Type per Aircraft")
         plt.show()
 
+def aircraft_per_bombings():
+
+        df2 = df.select(col('VALID_AIRCRAFT_ROOT').alias('Aircraft'), col('MFUNC_DESC').alias('Mission'), col('NUMWEAPONSDELIVERED')) \
+                .dropna() \
+                .groupBy(col('Aircraft'), col('Mission')) \
+                .agg(sum('NUMWEAPONSDELIVERED').alias('NumBombings')) \
+                .filter(col('NumBombings') > 60000) \
+                .orderBy(col('Aircraft')) \
+                .withColumn('margin_bottom', lit(0))
+
+        pandf = df2.toPandas()
+
+
+        labels = pandf['Aircraft'].drop_duplicates()
+        msn = pandf['Mission'].drop_duplicates()
+
+        fig, ax = plt.subplots(figsize=(20,10))
+
+        #LEGEND COLOR CONFIGURATION
+        NUM_COLORS = len(msn)
+        cm = plt.get_cmap('tab20')
+        ax.set_prop_cycle('color', [cm(1.*i/NUM_COLORS) for i in range(NUM_COLORS)])
+        #END OF COLOR CONFIGURATION
+
+        label_msn = []
+        p_msn = []
+        for m in msn:
+                sub = pandf.loc[pandf['Mission'] == m]
+                p1 = ax.bar(sub['Aircraft'], sub['NumBombings'], bottom=sub['margin_bottom'])
+
+                label_msn.append(m)
+                p_msn.append(p1)
+
+                for a in labels:
+                        if sub['Aircraft'].isin([a]).any():
+                                pandf.loc[pandf['Aircraft'] == a, 'margin_bottom'] += sub.loc[sub['Aircraft'] == a, 'NumBombings'].item()
+
+        
+        ax.legend(p_msn, label_msn)
+        ax.yaxis.set_major_formatter(mpt.EngFormatter())
+
+        plt.xticks(rotation=25)
+        plt.xlabel("Type of Aircraft")
+        plt.ylabel("Bombs dropped")
+        plt.title("Vietnam War Bombings per Aircraft")
+        plt.show()
+
+def most_common_takeoff(): 
+        df2 = df.select(col('TAKEOFFLOCATION').alias('Takeoff')) \
+                .dropna() \
+                .groupBy(col('Takeoff')) \
+                .agg(count(lit(1)).alias('NumMissions')) \
+                .filter(col('NumMissions') > 26000).filter(~(col('Takeoff').rlike('^WESTPAC.*$'))) \
+                .orderBy(col('NumMissions').desc())
+
+        pandf = df2.toPandas()
+        print(pandf)
+        fig, ax = plt.subplots(figsize=(16,9))
+
+        ax.bar(pandf['Takeoff'], pandf['NumMissions'], color='royalblue')
+        ax.legend()
+
+        #avoid scientific notation on Y-axis
+        #ax.ticklabel_format(style='plain', axis='y')
+        ax.yaxis.set_major_formatter(mpt.EngFormatter())
+
+        plt.xticks(rotation=20)
+        plt.xlabel("Take-off location")
+        plt.ylabel("Number of Missions")
+        plt.title("Vietnam War Most Common Take-off Locations")
+        plt.show()
 
 def main():
 
@@ -364,6 +435,10 @@ def main():
                 aircraft_types()
         elif int(sys.argv[1]) == 10:
                 aircraft_per_type_of_mission()
+        elif int(sys.argv[1]) == 11:
+                aircraft_per_bombings()
+        elif int(sys.argv[1]) == 12:
+                most_common_takeoff()
         else:
                 print("** ERROR: Wrong parameter **")
                 sys.exit(1)

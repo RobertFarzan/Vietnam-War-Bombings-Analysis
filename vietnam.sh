@@ -2,7 +2,7 @@
 
 PYFILE="project_Vietnam.py"
 DATASET_FILE="THOR_Vietnam_Bombing_Operations.csv"
-MAX_OPT=10
+MAX_OPT=12
 
 #color codes
 BLUE="\033[1;34m"
@@ -31,6 +31,8 @@ echo -e "\t($BLUE 7 $ENDC) Display MOST ATTACKED LOCATIONS MAP "
 echo -e "\t($BLUE 8 $ENDC) Display MOST ATTACKED LOCATIONS MAP BY DATE"
 echo -e "\t($BLUE 9 $ENDC) Display MOST USED TYPE OF AIRCRAFTS "
 echo -e "\t($BLUE 10 $ENDC) Display AIRCRAFTS PER TYPE OF MISSION "
+echo -e "\t($BLUE 11 $ENDC) Display AIRCRAFTS BOMBINGS PER TYPE OF MISSION "
+echo -e "\t($BLUE 12 $ENDC) Display MOST COMMON TAKE-OFF LOCATIONS "
 echo -e "\t($RED 0 $ENDC) Exit "
 echo ""
 
