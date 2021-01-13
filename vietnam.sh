@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export PYSPARK_PYTHON=python3
 PYFILE="project_Vietnam.py"
 DATASET_FILE="THOR_Vietnam_Bombing_Operations.csv"
 MAX_OPT=12
