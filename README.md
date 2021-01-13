@@ -1,7 +1,6 @@
-![](https://github.com/RobertFarzan/Vietnam-War-Bombings-Analysis/blob/gh-pages/assets/img/header-bg.jpg)
-
 # Vietnam War Bombings Analysis
 
+![](https://github.com/RobertFarzan/Vietnam-War-Bombings-Analysis/blob/gh-pages/assets/img/header-bg.jpg)
 
 __Vietnam War Bombings Analysis__ is a project which is intended to analyze a large amount of data from a dataset containing valuable information about the Vietnam War bombings, using Batch Data Processing to draw some results in the form of charts and graphs, that will help people verify whether this conclusions match with the real history.
 
