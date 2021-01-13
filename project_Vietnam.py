@@ -35,7 +35,7 @@ def total_bombings_bydate():
 
         pandf = df2.toPandas()
 
-        fig, ax = plt.subplots(figsize=(50,10))
+        fig, ax = plt.subplots(figsize=(19,10))
 
         pandf['Date'] =  pd.to_datetime(pandf['Date'], format='%Y-%m-%d')
 
@@ -65,6 +65,7 @@ def total_bombings_bydate():
         plt.title("Vietnam War Bombings (Monthly totals)")
         plt.grid(True)
         plt.savefig(output_dir + "total_bombings_bydate.png")
+        plt.close(fig)
 
 
 def total_missions_bydate(): 
@@ -76,7 +77,7 @@ def total_missions_bydate():
 
         pandf = df2.toPandas()
 
-        fig, ax = plt.subplots(figsize=(50,10))
+        fig, ax = plt.subplots(figsize=(19,10))
 
         pandf['Date'] =  pd.to_datetime(pandf['Date'], format='%Y-%m-%d')
 
@@ -107,6 +108,7 @@ def total_missions_bydate():
         plt.title("Vietnam War Missions (Monthly totals)")
         plt.grid(True)
         plt.savefig(output_dir + "total_missions_bydate.png")
+        plt.close(fig)
 
 def total_bombings_bycountry():
         df2 = df.select(col("COUNTRYFLYINGMISSION").alias("Country"), col("NUMWEAPONSDELIVERED")) \
@@ -117,7 +119,7 @@ def total_bombings_bycountry():
 
         pandf = df2.toPandas()
 
-        fig, ax = plt.subplots(figsize=(9,9))
+        fig, ax = plt.subplots(figsize=(10,9))
 
         ax.bar(pandf['Country'], pandf['NumWeapons'], color='royalblue')
         ax.legend()
@@ -131,6 +133,7 @@ def total_bombings_bycountry():
         plt.ylabel("Bombs dropped")
         plt.title("Vietnam War Bombings (Totals by Country)")
         plt.savefig(output_dir + "total_bombings_bycountry.png")
+        plt.close(fig)
 
 def total_missions_bycountry(): 
         df2 = df.select(col("COUNTRYFLYINGMISSION").alias("Country")) \
@@ -154,6 +157,7 @@ def total_missions_bycountry():
         plt.ylabel("Number of Missions")
         plt.title("Vietnam War Missions (Totals by Country)")
         plt.savefig(output_dir + "total_missions_bycountry.png")
+        plt.close(fig)
 
 def most_attacked_countries(): 
         df2 = df.select(col('TGTCOUNTRY').alias('TargetCountry'), col('NUMWEAPONSDELIVERED').alias('NumWeapons')) \
@@ -165,7 +169,7 @@ def most_attacked_countries():
 
         pandf = df2.toPandas()
 
-        fig, ax = plt.subplots(figsize=(9,9))
+        fig, ax = plt.subplots(figsize=(10,9))
 
         ax.bar(pandf['TargetCountry'], pandf['TotalWeaponsDropped'], color='royalblue')
         ax.legend()
@@ -179,6 +183,8 @@ def most_attacked_countries():
         plt.ylabel("Number of Bombs dropped")
         plt.title("Vietnam War Most Affected Countries")
         plt.savefig(output_dir + "most_attacked_countries.png")
+        plt.close(fig)
+
 
 def mission_types():
         total_msn = df.select(col('MFUNC_DESC_CLASS'), col('MFUNC_DESC')).dropna().groupBy().count().take(1)[0][0]
@@ -192,7 +198,7 @@ def mission_types():
 
         pandf = df2.toPandas()
 
-        fig, ax = plt.subplots(figsize=(20,10))
+        fig, ax = plt.subplots(figsize=(19,10))
 
         colors = {'KINETIC':'royalblue', 'NONKINETIC':'orange'}         
         labels = list(colors.keys())
@@ -209,6 +215,8 @@ def mission_types():
         plt.ylabel("Percentage of total missions")
         plt.title("Vietnam War Type of Missions")
         plt.savefig(output_dir + "mission_types.png")
+        plt.close(fig)
+
 
 def most_attacked_locations_map():
         
@@ -234,7 +242,7 @@ def most_attacked_locations_map():
                                 title='Vietnam War Bombing Locations')
 
         fig.write_html(output_dir + "total_attacked_locations.html")
-        #fig.show()
+
 
 def most_attacked_locations_map_bydate():
         
@@ -263,7 +271,7 @@ def most_attacked_locations_map_bydate():
                                 title='Vietnam War Bombing Locations By Date')
 
         fig.write_html(output_dir + 'attacked_locations_bydate.html')
-        #fig.show()
+
 
 def aircraft_types():
 
@@ -287,6 +295,7 @@ def aircraft_types():
         plt.ylabel("Number of missions")
         plt.title("Vietnam War Most used Aircrafts")
         plt.savefig(output_dir + "aircraft_types.png")
+        plt.close(fig)
 
 def aircraft_per_type_of_mission():
 
@@ -333,6 +342,8 @@ def aircraft_per_type_of_mission():
         plt.ylabel("Number of missions")
         plt.title("Vietnam War Mission Type per Aircraft")
         plt.savefig(output_dir + "aircraft_per_type_of_mission.png")
+        plt.close(fig)
+
 
 def aircraft_per_bombings():
 
@@ -380,6 +391,8 @@ def aircraft_per_bombings():
         plt.ylabel("Bombs dropped")
         plt.title("Vietnam War Bombings per Aircraft")
         plt.savefig(output_dir + "aircraft_per_bombings.png")
+        plt.close(fig)
+
 
 def most_common_takeoff(): 
         df2 = df.select(col('TAKEOFFLOCATION').alias('Takeoff')) \
@@ -405,12 +418,14 @@ def most_common_takeoff():
         plt.ylabel("Number of Missions")
         plt.title("Vietnam War Most Common Take-off Locations")
         plt.savefig(output_dir + "most_common_takeoff.png")
+        plt.close(fig)
+
 
 def main():
 
         try:
                 os.mkdir(output_dir)
-        except OSError:
+        except (FileExistsError, OSError):
                 pass
         
         if len(sys.argv) < 2:
