@@ -411,10 +411,11 @@ if __name__ == "__main__":
                 action="store",
                 default="output",
                 help="output folder (default: %(default)s)")
-        parser.add_argument("--local",
-                dest="local",
-                action="store_true",
-                help="run in local mode")
+        parser.add_argument("-c",
+                dest="cores",
+                action="store",
+                default="*",
+                help="number of cores to use (default: %(default)s)")
         parser.add_argument("analyses",
                 metavar="N",
                 nargs="*",
@@ -456,10 +457,7 @@ if __name__ == "__main__":
         except (FileExistsError, OSError):
                 pass
 
-        conf = SparkConf().setAppName("VietAnalysis")
-        if args.local:
-                conf = conf.setMaster("local[*]")
-
+        conf = SparkConf().setMaster("local[" + args.cores + "]").setAppName("VietAnalysis")
         sc = SparkContext(conf = conf)
         spark = SparkSession(sc)
 
