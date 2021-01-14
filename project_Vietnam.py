@@ -55,7 +55,7 @@ def total_bombings_bydate():
         plt.savefig(output_dir + "total_bombings_bydate.png")
         plt.close(fig)
 
-def total_missions_bydate(): 
+def total_missions_bydate():
         df2 = df.select(last_day("MSNDATE").alias("Date"), col("COUNTRYFLYINGMISSION").alias("Country")) \
                 .dropna() \
                 .groupBy(col("Date"), col("Country")) \
@@ -122,7 +122,7 @@ def total_bombings_bycountry():
         plt.savefig(output_dir + "total_bombings_bycountry.png")
         plt.close(fig)
 
-def total_missions_bycountry(): 
+def total_missions_bycountry():
         df2 = df.select(col("COUNTRYFLYINGMISSION").alias("Country")) \
                 .dropna() \
                 .groupBy(col("Country")) \
@@ -146,7 +146,7 @@ def total_missions_bycountry():
         plt.savefig(output_dir + "total_missions_bycountry.png")
         plt.close(fig)
 
-def most_attacked_countries(): 
+def most_attacked_countries():
         df2 = df.select(col('TGTCOUNTRY').alias('TargetCountry'), col('NUMWEAPONSDELIVERED').alias('NumWeapons')) \
                 .dropna() \
                 .groupBy(col('TargetCountry')) \
@@ -370,7 +370,7 @@ def aircraft_per_bombings():
         plt.savefig(output_dir + "aircraft_per_bombings.png")
         plt.close(fig)
 
-def most_common_takeoff(): 
+def most_common_takeoff():
         df2 = df.select(col('TAKEOFFLOCATION').alias('Takeoff')) \
                 .dropna() \
                 .groupBy(col('Takeoff')) \
@@ -411,23 +411,27 @@ if __name__ == "__main__":
                 action="store",
                 default="output",
                 help="output folder (default: %(default)s)")
+        parser.add_argument("--local",
+                dest="local",
+                action="store_true",
+                help="run in local mode")
         parser.add_argument("analyses",
                 metavar="N",
                 nargs="*",
                 default=range(12),
                 help="index of analysis that will be run (defaults to all)\n"
-                     "    0: total bombings by date\n"
-                     "    1: total missions by date\n"
-                     "    2: total bombings by country\n"
-                     "    3: total missions by country\n"
-                     "    4: most attacked countries\n"
-                     "    5: mission types\n"
-                     "    6: most attacked locations map\n"
-                     "    7: most attacked locations map by date\n"
-                     "    8: aircraft types\n"
-                     "    9: aircraft per type of mission\n"
-                     "    10: aircraft per bombings\n"
-                     "    11: most common takeoff")
+                     "    1: total bombings by date\n"
+                     "    2: total missions by date\n"
+                     "    3: total bombings by country\n"
+                     "    4: total missions by country\n"
+                     "    5: most attacked countries\n"
+                     "    6: mission types\n"
+                     "    7: most attacked locations map\n"
+                     "    8: most attacked locations map by date\n"
+                     "    9: aircraft types\n"
+                     "    10: aircraft per type of mission\n"
+                     "    11: aircraft per bombings\n"
+                     "    12: most common takeoff")
         args = parser.parse_args()
 
         list_colors = ['r', 'b', 'k', 'g', 'y', 'm', 'c']
@@ -452,7 +456,10 @@ if __name__ == "__main__":
         except (FileExistsError, OSError):
                 pass
 
-        conf = SparkConf().setMaster("local[*]").setAppName("VietAnalysis")
+        conf = SparkConf().setAppName("VietAnalysis")
+        if args.local:
+                conf = conf.setMaster("local[*]")
+
         sc = SparkContext(conf = conf)
         spark = SparkSession(sc)
 
@@ -460,11 +467,10 @@ if __name__ == "__main__":
 
         for i in args.analyses:
                 try:
-                        analyses[int(i)]()
+                        analyses[int(i)-1]()
                 except IndexError:
                         print("ERROR: Invalid analysis index: " + i)
                         sys.exit(1)
                 except ValueError:
                         print("ERROR: Index must be a number: " + i)
                         sys.exit(1)
-
