@@ -12,21 +12,9 @@ import plotly.express as px
 import plotly.graph_objects as go
 import sys
 import os
-
-conf = SparkConf().setMaster('local[*]').setAppName('VietAnalysis')
-sc = SparkContext(conf = conf)
-#sc.setLogLevel('WARN') #to remove most INFO messages
-spark = SparkSession(sc)
-
-list_colors = ['r', 'b', 'k', 'g', 'y', 'm', 'c']
-output_dir = "output/"
-
-#VietNam_1975.csv
-#THOR_Vietnam_Bombing_Operations.csv
-df = spark.read.csv("THOR_Vietnam_Bombing_Operations.csv", header=True, inferSchema=True)
+import argparse
 
 def total_bombings_bydate():
-
         df2 = df.select(last_day("MSNDATE").alias("Date"), col("COUNTRYFLYINGMISSION").alias("Country"), col("NUMWEAPONSDELIVERED")) \
                 .dropna() \
                 .groupBy(col("Date"), col("Country")) \
@@ -66,7 +54,6 @@ def total_bombings_bydate():
         plt.grid(True)
         plt.savefig(output_dir + "total_bombings_bydate.png")
         plt.close(fig)
-
 
 def total_missions_bydate(): 
         df2 = df.select(last_day("MSNDATE").alias("Date"), col("COUNTRYFLYINGMISSION").alias("Country")) \
@@ -185,7 +172,6 @@ def most_attacked_countries():
         plt.savefig(output_dir + "most_attacked_countries.png")
         plt.close(fig)
 
-
 def mission_types():
         total_msn = df.select(col('MFUNC_DESC_CLASS'), col('MFUNC_DESC')).dropna().groupBy().count().take(1)[0][0]
         df2 = df.select(col('MFUNC_DESC_CLASS').alias('Class'), col('MFUNC_DESC').alias('Description')) \
@@ -217,9 +203,7 @@ def mission_types():
         plt.savefig(output_dir + "mission_types.png")
         plt.close(fig)
 
-
 def most_attacked_locations_map():
-        
         df2 = df.select(round(col('TGTLATDD_DDD_WGS84'), 4).alias('Latitude'), round(col('TGTLONDDD_DDD_WGS84'), 4).alias('Longitude'), col('NUMWEAPONSDELIVERED').alias('Bombs dropped')) \
                 .filter(col('Bombs dropped') > 0) \
                 .dropna() \
@@ -243,9 +227,7 @@ def most_attacked_locations_map():
 
         fig.write_html(output_dir + "total_attacked_locations.html")
 
-
 def most_attacked_locations_map_bydate():
-        
         df2 = df.select(last_day('MSNDATE').alias("Date"), round(col('TGTLATDD_DDD_WGS84'), 4).alias('Latitude'), round(col('TGTLONDDD_DDD_WGS84'), 4).alias('Longitude'), col('NUMWEAPONSDELIVERED').alias('Bombs dropped')) \
                 .filter(col('Bombs dropped') > 0) \
                 .dropna() \
@@ -272,9 +254,7 @@ def most_attacked_locations_map_bydate():
 
         fig.write_html(output_dir + 'attacked_locations_bydate.html')
 
-
 def aircraft_types():
-
         df2 = df.select(col('VALID_AIRCRAFT_ROOT').alias('Aircraft')) \
                 .dropna() \
                 .groupBy(col('Aircraft')) \
@@ -298,7 +278,6 @@ def aircraft_types():
         plt.close(fig)
 
 def aircraft_per_type_of_mission():
-
         df2 = df.select(col('VALID_AIRCRAFT_ROOT').alias('Aircraft'), col('MFUNC_DESC').alias('Mission')) \
                 .dropna() \
                 .groupBy(col('Aircraft'), col('Mission')) \
@@ -344,9 +323,7 @@ def aircraft_per_type_of_mission():
         plt.savefig(output_dir + "aircraft_per_type_of_mission.png")
         plt.close(fig)
 
-
 def aircraft_per_bombings():
-
         df2 = df.select(col('VALID_AIRCRAFT_ROOT').alias('Aircraft'), col('MFUNC_DESC').alias('Mission'), col('NUMWEAPONSDELIVERED')) \
                 .dropna() \
                 .groupBy(col('Aircraft'), col('Mission')) \
@@ -393,7 +370,6 @@ def aircraft_per_bombings():
         plt.savefig(output_dir + "aircraft_per_bombings.png")
         plt.close(fig)
 
-
 def most_common_takeoff(): 
         df2 = df.select(col('TAKEOFFLOCATION').alias('Takeoff')) \
                 .dropna() \
@@ -420,58 +396,75 @@ def most_common_takeoff():
         plt.savefig(output_dir + "most_common_takeoff.png")
         plt.close(fig)
 
+if __name__ == "__main__":
+        parser = argparse.ArgumentParser(
+                description="Analyzes Vietnam bombing data using Spark",
+                formatter_class=argparse.RawTextHelpFormatter)
+        parser.add_argument("-f",
+                dest="filename",
+                action="store",
+                default="THOR_Vietnam_Bombing_Operations.csv",
+                help="input data (default: %(default)s)")
+        parser.add_argument("-o",
+                metavar="FOLDER",
+                dest="output",
+                action="store",
+                default="output",
+                help="output folder (default: %(default)s)")
+        parser.add_argument("analyses",
+                metavar="N",
+                nargs="*",
+                default=range(12),
+                help="index of analysis that will be run (defaults to all)\n"
+                     "    0: total bombings by date\n"
+                     "    1: total missions by date\n"
+                     "    2: total bombings by country\n"
+                     "    3: total missions by country\n"
+                     "    4: most attacked countries\n"
+                     "    5: mission types\n"
+                     "    6: most attacked locations map\n"
+                     "    7: most attacked locations map by date\n"
+                     "    8: aircraft types\n"
+                     "    9: aircraft per type of mission\n"
+                     "    10: aircraft per bombings\n"
+                     "    11: most common takeoff")
+        args = parser.parse_args()
 
-def main():
+        list_colors = ['r', 'b', 'k', 'g', 'y', 'm', 'c']
+        output_dir = args.output + "/"
+        analyses = [
+                total_bombings_bydate,
+                total_missions_bydate,
+                total_bombings_bycountry,
+                total_missions_bycountry,
+                most_attacked_countries,
+                mission_types,
+                most_attacked_locations_map,
+                most_attacked_locations_map_bydate,
+                aircraft_types,
+                aircraft_per_type_of_mission,
+                aircraft_per_bombings,
+                most_common_takeoff
+        ]
 
         try:
                 os.mkdir(output_dir)
         except (FileExistsError, OSError):
                 pass
-        
-        if len(sys.argv) < 2:
-                total_bombings_bydate()
-                total_missions_bydate()
-                total_bombings_bycountry()
-                total_missions_bycountry()
-                most_attacked_countries()
-                mission_types()
-                most_attacked_locations_map()
-                most_attacked_locations_map_bydate()
-                aircraft_types()
-                aircraft_per_type_of_mission()
-                aircraft_per_bombings()
-                most_common_takeoff()
-                sys.exit(0)
-        
-        if int(sys.argv[1]) == 1:
-                total_bombings_bydate()
-        elif int(sys.argv[1]) == 2:
-                total_missions_bydate()
-        elif int(sys.argv[1]) == 3:
-                total_bombings_bycountry()
-        elif int(sys.argv[1]) == 4:
-                total_missions_bycountry()
-        elif int(sys.argv[1]) == 5:
-                most_attacked_countries()
-        elif int(sys.argv[1]) == 6:
-                mission_types()
-        elif int(sys.argv[1]) == 7:
-                most_attacked_locations_map()
-        elif int(sys.argv[1]) == 8:
-                most_attacked_locations_map_bydate()
-        elif int(sys.argv[1]) == 9:
-                aircraft_types()
-        elif int(sys.argv[1]) == 10:
-                aircraft_per_type_of_mission()
-        elif int(sys.argv[1]) == 11:
-                aircraft_per_bombings()
-        elif int(sys.argv[1]) == 12:
-                most_common_takeoff()
-        else:
-                print("** ERROR: Wrong parameter **")
-                sys.exit(1)
-                        
-       
 
-if __name__ == "__main__":
-        main()
+        conf = SparkConf().setMaster("local[*]").setAppName("VietAnalysis")
+        sc = SparkContext(conf = conf)
+        spark = SparkSession(sc)
+
+        df = spark.read.csv(args.filename, header=True, inferSchema=True)
+
+        for i in args.analyses:
+                try:
+                        analyses[int(i)]()
+                except IndexError:
+                        print("ERROR: Invalid analysis index: " + i)
+                        sys.exit(1)
+                except ValueError:
+                        print("ERROR: Index must be a number: " + i)
+                        sys.exit(1)
+
