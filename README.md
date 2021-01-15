@@ -25,7 +25,7 @@ $ sudo apt-get update
 $ sudo apt-get install python3-pip
 ```
 
-### Using the installation script
+### 1. Using the installation script
 
 The files you already downloaded includes an **installation script** that will do it all for you. Make sure you have `requirements.txt` downloaded on the same directory you run the script. You just have to run it by typing:
 ```
