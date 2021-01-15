@@ -61,6 +61,8 @@ If everything goes as planned you should see the following display:<br/><br/>
 
 You can see a **fancy display with 13 options to choose**. You'll just have to type the number of option you want and after execution is done, you will find the results of the analysis on an `/output` directory.
 
+> :heavy_exclamation_mark: Choosing to use this run script **is more suitable for running in local mode**
+
 ### Running it with `spark-submit`
 
 
