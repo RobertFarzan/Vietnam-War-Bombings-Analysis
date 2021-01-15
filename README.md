@@ -77,9 +77,9 @@ $ vim $HOME/.profile
 ```
 Afterwards, we can finally proceed with running the program, using `spark-submit`. The most basic test case is the following:
 ```
-$ spark-submit project_Vietnam.py [n_option]
+$ spark-submit project_Vietnam.py [option]
 ```
-
+If no number of option is provided, it will run **all of the options**.
 ## Project website
 You can find more information about this project on our [GitHub website](https://robertfarzan.github.io/Vietnam-War-Bombings-Analysis/)
 
