@@ -56,7 +56,7 @@ $ ./run.sh
 ```
 
 Make sure you have the **dataset** `THOR_Vietnam_Bombing_Operations.csv` and the **Python script** `project_Vietnam.py` in the same directory from which you run the bash script.<br/><br/>
-If everything goes as planned you should see the following display:<br/>
+If everything goes as planned you should see the following display:<br/><br/>
 ![](https://github.com/RobertFarzan/Vietnam-War-Bombings-Analysis/blob/gh-pages/assets/img/program_display.PNG)
 
 ### Running it with `spark-submit`
