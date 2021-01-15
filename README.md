@@ -59,6 +59,8 @@ Make sure you have the **dataset** `THOR_Vietnam_Bombing_Operations.csv` and the
 If everything goes as planned you should see the following display:<br/><br/>
 ![](https://github.com/RobertFarzan/Vietnam-War-Bombings-Analysis/blob/gh-pages/assets/img/program_display.PNG)
 
+You can see a **fancy display with 13 options to choose**. You'll just have to type the number of option you want and after execution is done, you will find the results of the analysis on an `/output` directory.
+
 ### Running it with `spark-submit`
 
 
