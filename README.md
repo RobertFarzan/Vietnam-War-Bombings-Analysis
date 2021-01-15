@@ -14,7 +14,7 @@ We took the [dataset from Kaggle](https://www.kaggle.com/usaf/vietnam-war-bombin
  - **Python** 3.6.9 (at least)
  - **Apache Spark** 3.0.1 (at least)
  
-## 1. How to install the project :floppy_disk:
+## 1. :floppy_disk: How to install the project
 
 First, you'll have to **clone or download the repository** on your local machine, by doing:
 ```
@@ -44,7 +44,7 @@ If there's some problem during the installation, try installing them one by one 
 
 > :warning: **Installing lower versions of these dependencies might cause the program to stop working properly**  
 
-## <br/>2. How to run and use the program :rocket:
+## <br/>2. :rocket: How to run and use the program 
 
 To begin using the program, there are two methods, either using the **run script** that we provide you with or running it through `spark-submit`.<br/>
 > :rotating_light: **You must unzip `vietnam-war-bombing-operations.zip` before running the program, otherwise it won't work** 
@@ -101,11 +101,11 @@ optional arguments:
 
 > :white_check_mark:  The **-f option** is useful when you have the dataset **uploaded to a AWS S3 Bucket**. In that case, you just have to paste the link to the file on the S3 Bucket after -f
 
-## Project website :computer:
+## :computer: Project website 
 You can find more information about this project on our [GitHub website](https://robertfarzan.github.io/Vietnam-War-Bombings-Analysis/)
 
 
-## Authors :construction_worker:
+## :construction_worker: Authors
 [1]:https://github.com/RobertFarzan
 [2]:https://github.com/raquelpgo
 [3]:https://github.com/migroble
