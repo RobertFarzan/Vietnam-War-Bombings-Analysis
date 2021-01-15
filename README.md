@@ -28,15 +28,24 @@ $ sudo apt-get install python3-pip
 
 ### Using the installation script
 
-The files you already downloaded includes an **installation script** that will do it all for you. You just have to run it by typing:
+The files you already downloaded includes an **installation script** that will do it all for you. Make sure you have `requirements.txt` downloaded on the same directory you run the script. You just have to run it by typing:
 ```
 $ ./install.sh
 ```
+If the script fails for some reason, because you're using a different platform or OS, you may want to check the installation of every single package manually, as described in the following section.
 
+### Install dependencies manually
 
-### Install dependencies individually
+The following command installs Matplotlib, Plotly and Pandas libraries at once.
+```
+$ pip3 install matplotlib==3.3 plotly==4.14 pandas==1.1
+```
+If there's some problem during the installation, try installing them one by one and check out which one causes the failure.
+
+> :warning: **Installing lower versions of these dependencies might cause the program to stop working properly**
 
 ## How to run and use the program
+
 
 ## Project website
 You can find more information about this project on our [GitHub website](https://robertfarzan.github.io/Vietnam-War-Bombings-Analysis/)
