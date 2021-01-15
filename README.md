@@ -62,10 +62,10 @@ If everything goes as planned you should see the following display:<br/><br/>
 
 You can see a **fancy display with 13 options to choose**. You'll just have to type the number of option you want and after execution is done, you will find the results of the analysis on an `/output` directory.
 
-> :heavy_exclamation_mark:  Choosing to use this run script **is more suitable for running in local mode**
+> :warning:  Choosing to use this run script **is more suitable for running in local mode**
 
 ### b. Running it with `spark-submit`
-If you might want to **do some further configuration** tu run the script, such as **specify the number of cores to use** or **run the script on a AWS cluster**, this option is more suitable for you.</br></br>
+If you might want to **do some further configuration** tu run the script, such as **specify the number of cores to use** or **run the script on a AWS cluster**, this option is more suitable for you.</br>
 
 The first task to carry out is to **set Spark to use Python3**. In many systems, Spark still uses Python 2.7 by default if installed. To make this just type:
 ```
@@ -84,7 +84,7 @@ If no number of option is provided, it will run **all of the options**.
 
 The upside of this choice is that **you are allowed to set the number of nodes and cores to use on the running process**. To do this, you just have to specify the parameters `--num-executors` and `--executor-cores`. Remember to to write them BEFORE the script file. For instance:
 ```
-$ spark-submit --num-executors 2 --executor-cores 4 project_Vietnam.py [option]
+$ spark-submit --num-executors 2 --executor-cores 4 project_Vietnam.py [option] --cluster
 ```
 Will run the script on 2 machines, each using 4 cores.
 
@@ -101,11 +101,11 @@ optional arguments:
 
 > :white_check_mark:  The **-f option** is useful when you have the dataset **uploaded to a AWS S3 Bucket**. In that case, you just have to paste the link to the file on the S3 Bucket after -f
 
-## Project website
+## Project website :computer:
 You can find more information about this project on our [GitHub website](https://robertfarzan.github.io/Vietnam-War-Bombings-Analysis/)
 
 
-## Authors
+## Authors :construction_worker:
 [1]:https://github.com/RobertFarzan
 [2]:https://github.com/raquelpgo
 [3]:https://github.com/migroble
