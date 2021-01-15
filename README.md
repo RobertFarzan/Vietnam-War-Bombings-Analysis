@@ -13,7 +13,7 @@ We took the [dataset from Kaggle](https://www.kaggle.com/usaf/vietnam-war-bombin
  - **Python** 3.6.9 (at least)
  - **Apache Spark** 3.0.1 (at least)
  
-## How to install the project
+## 1. How to install the project
 
 First, you'll have to **clone or download the repository** on your local machine, by doing:
 ```
@@ -25,7 +25,7 @@ $ sudo apt-get update
 $ sudo apt-get install python3-pip
 ```
 
-### 1. Using the installation script
+### a. Using the installation script
 
 The files you already downloaded includes an **installation script** that will do it all for you. Make sure you have `requirements.txt` downloaded on the same directory you run the script. You just have to run it by typing:
 ```
@@ -33,7 +33,7 @@ $ ./install.sh
 ```
 If the script fails for some reason, because you're using a different platform or OS, you may want to check the installation of every single package manually, as described in the following section.
 
-### Install dependencies manually
+### b. Install dependencies manually
 
 The following command installs Matplotlib, Plotly and Pandas libraries at once.
 ```
@@ -43,12 +43,12 @@ If there's some problem during the installation, try installing them one by one 
 
 > :warning: **Installing lower versions of these dependencies might cause the program to stop working properly**  
 
-## <br/>How to run and use the program
+## <br/>2. How to run and use the program
 
 To begin using the program, there are two methods, either using the **run script** that we provide you with or running it through `spark-submit`.<br/>
 > :rotating_light: **You must unzip `vietnam-war-bombing-operations.zip` before running the program, otherwise it won't work** 
 
-### Using the run script
+### a. Using the run script
 
 To run the program with this method, you just have to run the script we provide by typing:
 ```
@@ -63,7 +63,7 @@ You can see a **fancy display with 13 options to choose**. You'll just have to t
 
 > :heavy_exclamation_mark:  Choosing to use this run script **is more suitable for running in local mode**
 
-### Running it with `spark-submit`
+### b. Running it with `spark-submit`
 If you might want to **do some further configuration** tu run the script, such as **specify the number of cores to use** or **run the script on a AWS cluster**, this option is more suitable for you.</br></br>
 
 The first task to carry out is to **set Spark to use Python3**. In many systems, Spark still uses Python 2.7 by default if installed. To make this just type:
