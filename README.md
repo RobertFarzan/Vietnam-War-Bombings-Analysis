@@ -44,9 +44,11 @@ If there's some problem during the installation, try installing them one by one 
 
 > :warning: **Installing lower versions of these dependencies might cause the program to stop working properly**
 
-
 ## How to run and use the program
 
+### Using the run script
+
+### Running it with `spark-submit`
 
 ## Project website
 You can find more information about this project on our [GitHub website](https://robertfarzan.github.io/Vietnam-War-Bombings-Analysis/)
