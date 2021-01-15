@@ -45,20 +45,22 @@ If there's some problem during the installation, try installing them one by one 
 
 ## <br/>How to run and use the program
 
-To begin using the program, there are two methods, either using the **run script** that we provide you with or running it through `spark-submit`.
+To begin using the program, there are two methods, either using the **run script** that we provide you with or running it through `spark-submit`.<br/>
 > :rotating_light: **You must unzip `vietnam-war-bombing-operations.zip` before running the program, otherwise it won't work** 
 
-### <br/>Using the run script
+### Using the run script
 
 To run the program with this method, you just have to run the script we provide by typing:
 ```
 $ ./run.sh
 ```
 
-Make sure you have the **dataset** `THOR_Vietnam_Bombing_Operations.csv` and the **Python script** `project_Vietnam.py` in the same directory from which you run the bash script.<br/>
+Make sure you have the **dataset** `THOR_Vietnam_Bombing_Operations.csv` and the **Python script** `project_Vietnam.py` in the same directory from which you run the bash script.<br/><br/>
 If everything goes as planned you should see the following display:
+![](https://github.com/RobertFarzan/Vietnam-War-Bombings-Analysis/blob/gh-pages/assets/img/program_display.PNG)
 
 ### Running it with `spark-submit`
+
 
 ## Project website
 You can find more information about this project on our [GitHub website](https://robertfarzan.github.io/Vietnam-War-Bombings-Analysis/)
