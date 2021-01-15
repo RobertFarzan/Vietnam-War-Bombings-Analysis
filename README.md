@@ -2,8 +2,19 @@
 
 ![](https://github.com/RobertFarzan/Vietnam-War-Bombings-Analysis/blob/gh-pages/assets/img/header-bg.jpg)
 
+## Description
+
 __Vietnam War Bombings Analysis__ is a project which is intended to analyze a large amount of data from a dataset containing valuable information about the Vietnam War bombings, using Batch Data Processing to draw some results in the form of charts and graphs, that will help people verify whether this conclusions match with the real history.
 
+We took the [dataset from Kaggle](https://www.kaggle.com/usaf/vietnam-war-bombing-operations) which data was provided by the [Defense Digital Service](https://dds.mil/) of the __US Department of Defense__.
+
+## Enviroment
+
+ - **Python** 2.7.12
+ - **Apache Spark** 2.2.0
+ - **AWS EC2** t2.nano
+ - **Ubuntu** 16.04
+ 
 ## How to install the project
 
 ## How to run and use the program
