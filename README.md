@@ -61,10 +61,20 @@ If everything goes as planned you should see the following display:<br/><br/>
 
 You can see a **fancy display with 13 options to choose**. You'll just have to type the number of option you want and after execution is done, you will find the results of the analysis on an `/output` directory.
 
-> :heavy_exclamation_mark: Choosing to use this run script **is more suitable for running in local mode**
+> :heavy_exclamation_mark:  Choosing to use this run script **is more suitable for running in local mode**
 
 ### Running it with `spark-submit`
+If you might want to **do some further configuration** tu run the script, such as **specify the number of cores to use** or **run the script on a AWS cluster**, this option is more suitable for you.</br></br>
 
+The first task to carry out is to **set Spark to use Python3**. In many systems, Spark still uses Python 2.7 by default if installed. To make this just type:
+```
+$ export PYSPARK_PYTHON=python3
+```
+This change is temporary. However, if you want to make it permanent, you'll have to write the previous line on your `$HOME/.profile` file:
+```
+$ gedit $HOME/.profile
+(write "export PYSPARK_PYTHON=python3" at the end)
+```
 
 ## Project website
 You can find more information about this project on our [GitHub website](https://robertfarzan.github.io/Vietnam-War-Bombings-Analysis/)
