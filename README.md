@@ -17,9 +17,22 @@ We took the [dataset from Kaggle](https://www.kaggle.com/usaf/vietnam-war-bombin
 ## How to install the project
 
 First, you'll have to **clone or download the repository** on your local machine, by doing:
-`$ git clone https://github.com/RobertFarzan/Vietnam-War-Bombings-Analysis`
+```
+$ git clone https://github.com/RobertFarzan/Vietnam-War-Bombings-Analysis
+```
+Before start using our application, you'll have to install some extra dependencies. To do the dependencies installation, you need to have **pip3** installed. Pip is just the **Python package installer for Python3 versions**. If you don't have it already installed (you can check it by typing `$ pip3 help` or `pip3 --version`) type the following:
+```
+$ sudo apt-get update
+$ sudo apt-get install python3-pip
+```
 
 ### Using the installation script
+
+The files you already downloaded includes an **installation script** that will do it all for you. You just have to run it by typing:
+```
+$ ./install.sh
+```
+
 
 ### Install dependencies individually
 
