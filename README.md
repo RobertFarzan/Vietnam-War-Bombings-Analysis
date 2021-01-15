@@ -18,5 +18,5 @@ You can find more information about this project on our [GitHub website](https:/
 [3]:https://github.com/migroble
 
 - [Robert Farzan Rodríguez][1]
-- [Raquel Pérez de Ossuna][2]
+- [Raquel Pérez González de Ossuna][2]
 - [Miguel Robledo Casal][3]
