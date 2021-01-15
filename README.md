@@ -8,11 +8,10 @@ __Vietnam War Bombings Analysis__ is a project which is intended to analyze a la
 
 We took the [dataset from Kaggle](https://www.kaggle.com/usaf/vietnam-war-bombing-operations) which data was provided by the [Defense Digital Service](https://dds.mil/) of the **US Department of Defense**.
 
-## Environment
+## Pre-requisites
 
- - **Python** 3.6.9
- - **Apache Spark** 3.0.1
- - **Ubuntu** 18.04
+ - **Python** 3.6.9 (at least)
+ - **Apache Spark** 3.0.1 (at least)
  
 ## How to install the project
 
@@ -46,8 +45,16 @@ If there's some problem during the installation, try installing them one by one 
 
 ## How to run and use the program
 
+To begin using the program, there are two methods, either using the **run script** that we provide you with or running it through `spark-submit`.
+> :rotating_light: **You must unzip `vietnam-war-bombing-operations.zip` before running the program, otherwise it won't work** 
+
 ### Using the run script
 
+To run the program with this method, you just have to run the script we provide by typing:
+```
+$ ./run.sh
+```
+Make sure you have the **dataset** `THOR_Vietnam_Bombing_Operations.csv`** and the **Python script** `project_Vietnam.py` in the same directory from which you run the bash script.
 ### Running it with `spark-submit`
 
 ## Project website
