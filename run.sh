@@ -65,6 +65,10 @@ else
 	    echo -ne "${ENDC}"
     done
 
+    if [ $opt -eq 0 ] ;then
+	    exit 0
+    fi
+
     if ! [ -e $PYFILE ] ;then
 	    echo -e "${RED}**ERROR: Python script file \"$PYFILE\" not found**${ENDC}"
 	    exit 1
@@ -73,10 +77,6 @@ else
     if ! [ -e $DATASET_FILE ] ;then
 	    echo -e "${RED}**ERROR: Dataset \"$DATASET_FILE\" not found**${ENDC}"
 	    exit 1
-    fi
-
-    if [ $opt -eq 0 ] ;then
-	    exit 0
     fi
 
     spark-submit $PYFILE $opt
