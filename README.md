@@ -10,6 +10,7 @@ We took the [dataset from Kaggle](https://www.kaggle.com/usaf/vietnam-war-bombin
 
 ## Prerequisites
 
+ - **Ubuntu** 18.04
  - **Python** 3.6.9 (at least)
  - **Apache Spark** 3.0.1 (at least)
  
@@ -88,7 +89,17 @@ $ spark-submit --num-executors 2 --executor-cores 4 project_Vietnam.py [option]
 Will run the script on 2 machines, each using 4 cores.
 
 #### Extra options
-Additionally, we have set a few more options to configure 
+Additionally, we have set a few more options to configure in case you want to work in **cluster mode** (local mode is set by default), **change the output folder** or **the dataset file name**. Here we use how to use them:
+```
+optional arguments:
+  -h, --help   show this help message and exit
+  -f FILENAME  input data (default: THOR_Vietnam_Bombing_Operations.csv)
+  -o FOLDER    output folder (default: output)
+  --cluster    run in cluster mode
+  -c CORES     number of cores to use (only works in local mode) (default: *)
+```
+
+> :white_check_mark:  The **-f option** is useful when you have the dataset **uploaded to a AWS S3 Bucket**. In that case, you just have to paste the link to the file on the S3 Bucket after -f
 
 ## Project website
 You can find more information about this project on our [GitHub website](https://robertfarzan.github.io/Vietnam-War-Bombings-Analysis/)
