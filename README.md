@@ -80,6 +80,12 @@ Afterwards, we can finally proceed with running the program, using `spark-submit
 $ spark-submit project_Vietnam.py [option]
 ```
 If no number of option is provided, it will run **all of the options**.
+
+The upside of this choice is that **you are allowed to set the number of nodes and cores to use on the running process**. To do this, you just have to specify the parameters `--num-executors` and `--executor-cores`. Remember to to write them BEFORE the script file. For instance:
+```
+$ spark-submit --num-executors 2 --executor-cores 4 project_Vietnam.py [option]
+```
+Will run the script on 2 machines, each using 4 cores.
 ## Project website
 You can find more information about this project on our [GitHub website](https://robertfarzan.github.io/Vietnam-War-Bombings-Analysis/)
 
