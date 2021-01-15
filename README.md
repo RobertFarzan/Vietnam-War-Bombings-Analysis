@@ -86,6 +86,10 @@ The upside of this choice is that **you are allowed to set the number of nodes a
 $ spark-submit --num-executors 2 --executor-cores 4 project_Vietnam.py [option]
 ```
 Will run the script on 2 machines, each using 4 cores.
+
+#### Extra options
+Additionally, we have set a few more options to configure 
+
 ## Project website
 You can find more information about this project on our [GitHub website](https://robertfarzan.github.io/Vietnam-War-Bombings-Analysis/)
 
