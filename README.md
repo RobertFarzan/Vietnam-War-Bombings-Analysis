@@ -39,25 +39,25 @@ The following command installs Matplotlib, Plotly and Pandas libraries at once.
 ```
 $ pip3 install matplotlib==3.3 plotly==4.14 pandas==1.1
 ```
-If there's some problem during the installation, try installing them one by one and check out which one causes the failure.
+If there's some problem during the installation, try installing them one by one and check out which one causes the failure.<br/>
 
 > :warning: **Installing lower versions of these dependencies might cause the program to stop working properly**  
 
 ## <br/>How to run and use the program
 
 To begin using the program, there are two methods, either using the **run script** that we provide you with or running it through `spark-submit`.
-
-
 > :rotating_light: **You must unzip `vietnam-war-bombing-operations.zip` before running the program, otherwise it won't work** 
 
-### Using the run script
+### <br/>Using the run script
 
 To run the program with this method, you just have to run the script we provide by typing:
 ```
 $ ./run.sh
 ```
 
-Make sure you have the **dataset** `THOR_Vietnam_Bombing_Operations.csv`** and the **Python script** `project_Vietnam.py` in the same directory from which you run the bash script.
+Make sure you have the **dataset** `THOR_Vietnam_Bombing_Operations.csv` and the **Python script** `project_Vietnam.py` in the same directory from which you run the bash script.<br/>
+If everything goes as planned you should see the following display:
+
 ### Running it with `spark-submit`
 
 ## Project website
