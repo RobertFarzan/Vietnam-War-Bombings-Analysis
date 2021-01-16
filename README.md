@@ -99,7 +99,7 @@ optional arguments:
   -c CORES     number of cores to use (only works in local mode) (default: *)
 ```
 
-> :white_check_mark:  The **-f option** is useful when you have the dataset **uploaded to a AWS S3 Bucket**. In that case, you just have to paste the link to the file on the S3 Bucket after -f
+> :white_check_mark:  The **-f option** is useful when you have the dataset **uploaded to an AWS S3 Bucket**. In that case, you just have to paste the link to the file on the S3 Bucket after -f
 
 ## :computer: Project website 
 You can find more information about this project on our [GitHub website](https://robertfarzan.github.io/Vietnam-War-Bombings-Analysis/)
