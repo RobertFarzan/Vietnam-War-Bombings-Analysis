@@ -65,7 +65,7 @@ You can see a **fancy display with 13 options to choose**. You'll just have to t
 > :warning:  Choosing to use this run script **is more suitable for running in local mode**
 
 ### b. Running it with `spark-submit`
-If you might want to **do some further configuration** tu run the script, such as **specify the number of cores to use** or **run the script on a AWS cluster**, this option is more suitable for you.</br>
+If you might want to **do some further configuration** to run the script, such as **specify the number of cores to use** or **run the script on a AWS cluster**, this option is more suitable for you.</br>
 
 The first task to carry out is to **set Spark to use Python3**. In many systems, Spark still uses Python 2.7 by default if installed. To make this just type:
 ```
