@@ -111,14 +111,14 @@
             </div>
         </section>
         
-        <!-- MODEL DESCRIPTION -->
+       <!-- MODEL DESCRIPTION -->
         
         
                 <section class="page-section" id="model-descr">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase"> Model Description</h2>
-                    <h3 class="section-subheading text-muted">As said before, we have taken all of our information from 3 datasets, these are available for everybody at Kaggle, and can be found <a href="https://www.kaggle.com/usaf/vietnam-war-bombing-operations"> clicking here</a> the name of these datasets are:</h3>
+                    <h3 class="section-subheading text-muted">As said before, all of our information can be found in 3 datasets, these are available for everybody at Kaggle, and can be found <a href="https://www.kaggle.com/usaf/vietnam-war-bombing-operations"> clicking here</a> the name of these datasets are:</h3>
                 </div>
                 <div class="row text-center">
                     <div class="col-md-4">
@@ -130,6 +130,7 @@
                         
                         
                     </div>
+                    
                     <div class="col-md-4">
                         <span class="fa-stack fa-4x">
                             <i class="fas fa-circle fa-stack-2x text-primary"></i>
@@ -148,7 +149,37 @@
                     </div>
                     
                 </div>
-                <h3 class="section-subheading text-muted"> <br/> <br/>  <br/>We have made use of spark.sql.module to do all the filtering, grouping operations and also to help us implement statistical methods such as the mean, standard deviation or variances. </h3>
+                <h3 class="section-subheading text-muted text-center"> <br/> <br/>  <br/>We have made use of spark.sql.module to do all the filtering, grouping operations and also to help us implement statistical methods such as the mean, standard deviation or variances. <br/><br/> We had to filter lots of rows in order to make some of the frameworks work with less data size (like Plotly for maps). We hope we find a way to include all the data into account, perhaps by finding another library for mapping optimized for large chunks of data.</h3>
+                
+                <h4 class="text-center"> <br/> <br/>  <br/>MODEL OF THE SOLUTION </h4>
+                <h3 class="section-subheading text-muted"> <br/> <br/>  <br/> <strong><u>Where to run it:</u></strong> It can either be runned <strong>on local or on a cluster</strong>, but the following steps need to be done wherever chosen <br/><br/> 
+                    <strong><u>Dependencies:</u></strong> Run the installation scr¡pt called “<strong>install.sh</strong>” (no Spark or Python3 included) <br/><br/>
+                    <strong><u>How to use it:</u></strong> Once all the dependencies are installed, the script “<strong>run.sh</strong>” should be runned. It will show a menu where an option should be chosen <br/>
+                    </h3>
+                
+                <h4 class="text-center">Link to the repository!</h4>
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            
+                            <i class="fas fa-dice-one fa-stack-1x fa-inverse"></i>
+                        </span>
+                        
+                        
+                        
+                    </div>
+                   
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <i class="fas fa-circle fa-stack-1x text-primary"></i>
+                            
+                            <a class="btn btn-dark btn-social mx-5" href="https://github.com/RobertFarzan/Vietnam-War-Bombings-Analysis"><i class="fab fa-github fa-stack-2x"></i></a>
+                        </span>
+                        
+                        
+                    </div>
+                    
+                </div>
                 
             </div>
         </section>
@@ -200,7 +231,7 @@
             </div>
         </section>
         
-                        <!-- RESULTS-->
+                                <!-- RESULTS-->
         <section class="page-section" style="background-color:black" id="results">
             <div class="container">
                 <div class="text-center">
@@ -379,7 +410,40 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            
+            <br/><br/><br/><br/><br/><br/><br/><br/><h2 class="section-heading text-uppercase text-center" style="color: white">PERFORMANCE</h2>
+               <div class="row">
+                    <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal19">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/portfolio/19-thumbnail.jpg" alt="" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading" style="color: white">Performance Evaluation</div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                   
+                   <div class="col-lg-4 col-sm-6 mb-4">
+                        <div class="portfolio-item">
+                            <a class="portfolio-link" data-toggle="modal" href="#portfolioModal20">
+                                <div class="portfolio-hover">
+                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
+                                </div>
+                                <img class="img-fluid" src="assets/img/portfolio/20-thumbnail.jpg" alt="" />
+                            </a>
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading" style="color: white">Speed-Up</div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                   </div>
+                </div>
         </section>
 
         
@@ -398,9 +462,7 @@
                             <img class="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="" />
                             <h4>Raquel Pérez González de Ossuna</h4>
                             <p class="text-muted"></p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
+                            
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -408,9 +470,7 @@
                             <img class="mx-auto rounded-circle" src="assets/img/team/2.jpg" alt="" />
                             <h4>Robert Farzan Rodríguez</h4>
                             <p class="text-muted"></p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
+                            
                         </div>
                     </div>
                     <div class="col-lg-4">
@@ -418,9 +478,6 @@
                             <img class="mx-auto rounded-circle" src="assets/img/team/3.jpg" alt="" />
                             <h4>Diana Petersen</h4>
                             <p class="text-muted"></p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                 </div>
@@ -430,20 +487,7 @@
             </div>
         </section>
         
-
-        <!-- Footer-->
-        <footer class="footer py-4">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-4 text-lg-left">Want to see more about this project?</div>
-                    <div class="col-lg-4 my-3 my-lg-0">
-                        <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-github"></i></a>
-                        
-                    </div>
-        
-                </div>
-            </div>
-        </footer>
+       
         
         <!-- GRAPHICS-->
         
@@ -773,7 +817,60 @@
             </div>
         </div>
         
+                 <!-- Modal 19-->
+        <div class="portfolio-modal modal fade" id="portfolioModal19" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project Details Go Here-->
+                                    <h2 class="text-uppercase">Performance Evaluation</h2>
+                                    
+                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/19-full.jpg" alt="" />
+                                   
+                                    
+                                    <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                        <i class="fas fa-times mr-1"></i>
+                                        Close Chart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         
+        
+        <!-- Modal 20-->
+        <div class="portfolio-modal modal fade" id="portfolioModal20" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="close-modal" data-dismiss="modal"><img src="assets/img/close-icon.svg" alt="Close modal" /></div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <div class="modal-body">
+                                    <!-- Project Details Go Here-->
+                                    <h2 class="text-uppercase">Speed-Up</h2>
+                                    
+                                    <img class="img-fluid d-block mx-auto" src="assets/img/portfolio/20-full.jpg" alt="" />
+                                
+                                    
+                                    <button class="btn btn-primary" data-dismiss="modal" type="button">
+                                        <i class="fas fa-times mr-1"></i>
+                                        Close Chart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         
         <!-- Bootstrap core JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
