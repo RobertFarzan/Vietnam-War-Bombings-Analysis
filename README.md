@@ -42,7 +42,7 @@ $ pip3 install matplotlib==3.3 plotly==4.14 pandas==1.1
 ```
 If there's some problem during the installation, try installing them one by one and check out which one causes the failure.<br/>
 
-> :warning: **Installing lower versions of these dependencies might cause the program to stop working properly**  
+> :warning: **These are the minimum versions we used during the development. Installing older versions of these dependencies might cause the program to stop working properly, but installing newest versions should not be a problem**  
 
 ## <br/>2. :rocket: How to run and use the program 
 
