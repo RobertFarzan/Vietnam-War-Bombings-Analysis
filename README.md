@@ -10,7 +10,7 @@ We took the [dataset from Kaggle](https://www.kaggle.com/usaf/vietnam-war-bombin
 
 ## Prerequisites
 
- - **Ubuntu** 18.04
+ - **Ubuntu** 18.04 (compatible with other systems as well)
  - **Python** 3.6.9 (at least)
  - **Apache Spark** 3.0.1 (at least)
  
