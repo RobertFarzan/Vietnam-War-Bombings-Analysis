@@ -75,6 +75,7 @@ This change is temporary. However, if you want to make it permanent, you'll have
 ```
 $ vim $HOME/.profile
 (write "export PYSPARK_PYTHON=python3" at the end)
+$ source $HOME/.profile
 ```
 Afterwards, we can finally proceed with running the program, using `spark-submit`. The most basic test case is the following:
 ```
