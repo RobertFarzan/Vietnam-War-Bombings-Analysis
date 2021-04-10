@@ -44,6 +44,15 @@ If there's some problem during the installation, try installing them one by one 
 
 > :warning: **These are the minimum versions we used during the development. Installing older versions of these dependencies might cause the program to stop working properly, but installing newest versions should not be a problem**  
 
+### c. Download the dataset from Kaggle.
+
+Downloading the dataset from this GitHub repository is no longer available. Instead, [download the dataset from Kaggle](https://www.kaggle.com/usaf/vietnam-war-bombing-operations).
+```
+$ pip3 install matplotlib==3.3 plotly==4.14 pandas==1.1
+```
+If there's some problem during the installation, try installing them one by one and check out which one causes the failure.<br/>
+
+
 ## <br/>2. :rocket: How to run and use the program 
 
 To begin using the program, there are two methods, either using the **run script** that we provide you with or running it through `spark-submit`.<br/>
