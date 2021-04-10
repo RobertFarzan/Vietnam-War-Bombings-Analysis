@@ -47,11 +47,6 @@ If there's some problem during the installation, try installing them one by one 
 ### c. Download the dataset from Kaggle.
 
 Downloading the dataset from this GitHub repository is no longer available. Instead, [download the dataset from Kaggle](https://www.kaggle.com/usaf/vietnam-war-bombing-operations).
-```
-$ pip3 install matplotlib==3.3 plotly==4.14 pandas==1.1
-```
-If there's some problem during the installation, try installing them one by one and check out which one causes the failure.<br/>
-
 
 ## <br/>2. :rocket: How to run and use the program 
 
