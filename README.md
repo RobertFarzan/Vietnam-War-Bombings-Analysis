@@ -8,7 +8,7 @@ __Vietnam War Bombings Analysis__ is a project which is intended to analyze a la
 
 We took the [dataset from Kaggle](https://www.kaggle.com/usaf/vietnam-war-bombing-operations) which data was provided by the [Defense Digital Service](https://dds.mil/) of the **US Department of Defense**.
 
-## Prerequisites
+## Pre-requisites
 
  - **Ubuntu** 18.04 (compatible with other systems as well)
  - **Python** 3.6.9 (at least)
